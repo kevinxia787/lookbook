@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Dimmer, Loader, Card, Menu, Container, Button, Icon } from 'semantic-ui-react';
+import { Dimmer, Loader, Menu, Container } from 'semantic-ui-react';
 import './Root.css';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
 import Slider from 'react-slick';
 
 class Root extends Component {
@@ -59,8 +57,10 @@ class Root extends Component {
         </Menu>
         <Slider {...settings}>
           {fitpics.map(i => {
+            console.log(i.url)
             return (
-              <div style={{display: 'inline-block'}}>
+              
+              <div key={i.id} style={{display: 'inline-block'}}>
                 <img className="image" src={i.url}/>  
               </div>
             )
