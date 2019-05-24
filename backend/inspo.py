@@ -16,7 +16,9 @@ def get_hot_fits():
   for i in streetwear.search('WDYWT', sort='hot', limit=250):
     post_title = i.title
     if ('[WDYWT]' in post_title):
-      fitpics.append(i.url)
+      if (i.url[-4:] == '.jpg' or i.url[-4:] == '.png'):
+        fitpics.append(i.url)
+      
   return fitpics
 
 def get_top_fits():
@@ -27,3 +29,4 @@ def get_top_fits():
       fitpics.append(i.url)
       
   return fitpics
+
