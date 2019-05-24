@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import { Dimmer, Loader, Card, Menu, Container, Button, Icon } from 'semantic-ui-react';
 import './Root.css';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
+import Slider from 'react-slick';
 
 class Root extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {fitpics: [], pointer: 0};
-
-    this.leftClick = this.leftClick.bind(this);
-    this.rightClick = this.rightClick.bind(this);
+    this.state = {fitpics: []};
   }
 
   componentDidMount() {
@@ -24,31 +23,15 @@ class Root extends Component {
       .catch(err => console.log(err))
   }
 
-  leftClick() {
-    const { pointer, fitpics } = this.state;
-    console.log(fitpics.length)
-    if (pointer === 0) {
-      let newPointer = fitpics.length - 1;
-      this.setState({pointer: newPointer})
-      return;
-    }
-    this.setState({pointer: this.state.pointer - 1})
-  }
-
-  rightClick() {
-    const { pointer, fitpics } = this.state;
-    if (pointer === fitpics.length - 1) {
-      console.log("xd")
-      this.setState({pointer: 0})
-      return;
-    }
-    this.setState({pointer: this.state.pointer + 1})
-  }
 
   render() {
-    const { fitpics, pointer } = this.state;
-    const curr = fitpics[pointer];
-
+    const { fitpics } = this.state;
+    const settings = {
+      dots: false,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+    }
     if (fitpics.length === 0) {
       return (
         <div>
@@ -74,9 +57,15 @@ class Root extends Component {
             </Menu.Item>
           </Container>
         </Menu>
-        <Carousel>
-          <img src=""/>
-        </Carousel>
+        <Slider {...settings}>
+          {fitpics.map(i => {
+            return (
+              <div style={{display: 'inline-block'}}>
+                <img className="image" src={i.url}/>  
+              </div>
+            )
+          })}
+        </Slider>
       </div>
     )
   }

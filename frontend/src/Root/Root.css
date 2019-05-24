@@ -1,5 +1,10 @@
-.fakeCarousel {
-  display: inline-flex;
-  margin-left: auto;
-  margin-right: auto;
+.image {
+  max-width: 100%;
+  width: 35%;
+  margin: auto;
+}
+
+*:focus {
+  outline: 0;
+  outline: none;
 }
