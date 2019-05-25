@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Dimmer, Loader, Menu, Container, Button, Icon } from 'semantic-ui-react';
-import './Root.css';
+import './Top.css';
 import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
 
-class Root extends Component {
+class Top extends Component {
   constructor(props) {
     super(props)
 
@@ -16,7 +16,7 @@ class Root extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:5000/favorites", {method: 'GET', dataType:'json'})
+    fetch("http://localhost:5000/top", {method: 'GET', dataType:'json'})
       .then(r => r.json())
       .then(r => {
         this.setState((state) => {
@@ -68,13 +68,13 @@ class Root extends Component {
       <div>
         <Menu fixed='top' inverted borderless>
           <Container>
-            <Menu.Item >
+            <Menu.Item as={Link} to="/">
               lookbook
             </Menu.Item>
-            <Menu.Item as={Link} to='/top'>
+            <Menu.Item as={Link} to="/top">
               top
             </Menu.Item>
-            <Menu.Item as={Link} to='/hot'>
+            <Menu.Item as={Link} to="/hot">
               hot
             </Menu.Item>
           </Container>
@@ -90,7 +90,7 @@ class Root extends Component {
               )
             })}
           </Slider>
-          <div style={{marginTop: '-250px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <div style={{marginTop: '-900px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
             <Button secondary icon labelPosition='left' onClick={this.prev}>
               <Icon name='left arrow'/>
               Previous
@@ -112,4 +112,4 @@ class Root extends Component {
   }
 }
 
-export default Root;
+export default Top;
