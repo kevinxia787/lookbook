@@ -29,4 +29,3 @@ def get_top_fits():
       fitpics.append(i.url)
       
   return fitpics
-

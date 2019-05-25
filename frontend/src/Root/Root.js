@@ -15,7 +15,7 @@ class Root extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:5000/hot", {method: 'GET', dataType:'json'})
+    fetch("http://localhost:5000/favorites", {method: 'GET', dataType:'json'})
       .then(r => r.json())
       .then(r => {
         this.setState((state) => {
@@ -49,6 +49,12 @@ class Root extends Component {
             <Menu.Item >
               lookbook
             </Menu.Item>
+            <Menu.Item>
+              top
+            </Menu.Item>
+            <Menu.Item>
+              hot
+            </Menu.Item>
           </Container>
         </Menu>
           <Dimmer active>
@@ -64,6 +70,12 @@ class Root extends Component {
             <Menu.Item >
               lookbook
             </Menu.Item>
+            <Menu.Item>
+              top
+            </Menu.Item>
+            <Menu.Item>
+              hot
+            </Menu.Item>
           </Container>
         </Menu>
         <div>
@@ -71,20 +83,19 @@ class Root extends Component {
             {fitpics.map(i => {
               console.log(i.url)
               return (
-                
                 <div key={i.id} style={{display: 'inline-block'}}>
-                  <img className="image" src={i.url}/>  
+                  <img alt="" className="image" src={i.url}/>  
                 </div>
               )
             })}
           </Slider>
-          <div style={{marginTop: '-300px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <div style={{marginTop: '-250px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
             <Button secondary icon labelPosition='left' onClick={this.prev}>
               <Icon name='left arrow'/>
               Previous
             </Button>
             <Button secondary animated='vertical'>
-              <Button.Content hidden>Save</Button.Content>
+              <Button.Content hidden>Favorite</Button.Content>
               <Button.Content visible>
                 <Icon name='heart' />
               </Button.Content>

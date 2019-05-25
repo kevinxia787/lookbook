@@ -8,9 +8,29 @@ from inspo import *
 app = Flask(__name__)
 CORS(app)
 
+DATABASE = 'lookbook.db'
+
+def query_db(query, args=(), one=False):
+  conn = sqlite3.connect(DATABASE)
+  curr = conn.execute(query)
+  rv = curr.fetchall()
+  curr.close()
+  return (rv[0] if rv else None) if one else rv
+
 @app.route("/")
 def root():
   return "Inspo API Working"
+
+@app.route("/favorites")
+def get_favorites():
+  result = []
+  for row in query_db('select * from favorite'):
+    (_id, url) = row
+    obj_data = {'id': _id, 'url': url}
+    result.append(obj_data)
+
+  return json.dumps(result)
+
 
 @app.route("/top")
 def get_top():
