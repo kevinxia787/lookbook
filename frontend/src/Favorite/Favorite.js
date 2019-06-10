@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Dimmer, Loader, Menu, Container, Button, Icon } from 'semantic-ui-react';
-import './Root.css';
+import './Favorite.css';
 import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
 
-class Root extends Component {
+class Favorite extends Component {
   constructor(props) {
     super(props)
 
@@ -95,12 +95,7 @@ class Root extends Component {
               <Icon name='left arrow'/>
               Previous
             </Button>
-            <Button secondary animated='vertical'>
-              <Button.Content hidden>Favorite</Button.Content>
-              <Button.Content visible>
-                <Icon name='heart' />
-              </Button.Content>
-            </Button>
+            {/* trash button makes more sense here btw */}
             <Button secondary icon labelPosition='right' onClick={this.next}>
                 Next
               <Icon name='right arrow'/>
@@ -112,4 +107,4 @@ class Root extends Component {
   }
 }
 
-export default Root;
+export default Favorite;

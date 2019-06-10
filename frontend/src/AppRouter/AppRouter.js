@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import { Menu, Container} from 'semantic-ui-react';
-import Root from '../Root/Root';
+import Favorite from '../Favorite/Favorite';
 import Top from '../Top/Top';
 import Hot from '../Hot/Hot';
 
@@ -24,7 +24,7 @@ class AppRouter extends Component {
               </Menu.Item>
             </Container>
           </Menu>
-          <Route path="/" exact component={Root}/>
+          <Route path="/" exact component={Favorite}/>
           <Route path="/top" component={Top}/>
           <Route path="/hot" component={Hot}/>
         </div>
